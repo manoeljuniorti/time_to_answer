@@ -189,7 +189,7 @@
                       <%= current_user.email%>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">                
-                      <%= link_to destroy_user_session_path do %>
+                      <%= link_to destroy_user_session_path, class:"dropdown-item" do %>
                         <i class="fa fa-sign-out pull-right"></i> Log Out</a>
                       <% end %>
                     </div>
