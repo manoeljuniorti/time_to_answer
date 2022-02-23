@@ -13,7 +13,7 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
 
     if @admin.update(params_admin)
       redirect_to admins_backoffice_admins_path, notice: "Administrador Atualizado com sucesso"
-    else
+    else      
       render :edit
     end
   end
