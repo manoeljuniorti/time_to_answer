@@ -55,6 +55,7 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'kaminari'
 gem 'kaminari-i18n'
+gem 'cocoon'
 
 
 group :development, :test do
