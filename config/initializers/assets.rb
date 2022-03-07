@@ -11,3 +11,4 @@ Rails.application.config.assets.version = "1.0"
 # folder are already added.
 Rails.application.config.assets.precompile += %w( admin_backoffice.js admin_backoffice.css )
 Rails.application.config.assets.precompile += %w( user_backoffice.js user_backoffice.css )
+Rails.application.config.assets.paths << Rails.root.join("node_modules")
