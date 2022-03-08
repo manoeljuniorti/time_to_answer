@@ -9,7 +9,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    
+
+    <link href="/templates/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/navbar-static/">
    
     <!-- Bootstrap core CSS -->
@@ -37,7 +41,7 @@
       </style>
    
     <!-- Custom styles for this template -->
-    <link href="navbar-top.css" rel="stylesheet">
+    <link href="/templates/bootstrap-4.6.1-examples/navbar-static/navbar-top.css" rel="stylesheet">
   </head>
   <body>
     
@@ -57,8 +61,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li>
+                    <%= link_to users_backoffice_welcome_index_path, class:"dropdown-item" do %>
+                        <i class="fa fa-user"></i> Perfil
+                    <% end %>
+                  </li>
+
+                  <li>
                     <%= link_to destroy_user_session_path, class:"dropdown-item" do %>
-                        <i class="fa fa-sign-out fa-fw"></i> Sair
+                        <i class="fa fa-sign-out"></i> Sair
                     <% end %>
                   </li>
                 </ul>
@@ -82,5 +92,16 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/templates/bootstrap-4.6.1-examples/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/templates/bootstrap-4.6.1-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
   
+      <% if notice %>
+      <%= javascript_tag  do %>
+        $.bootstrapGrowl("<%= notice %>", {
+        type: 'success', // (null, 'info', 'danger', 'success')
+        align: 'right', // ('left', 'right', or 'center')
+        allow_dismiss: true, // If true then will display a cross to close the popup.
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+        });
+      <% end %>
+    <% end %>
+
   </body>
 </html>
