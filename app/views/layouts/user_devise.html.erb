@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>TimeToAnswer</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+
+    <!-- Bootstrap -->
+    <link href="/templates/gentelella/vendors/bootstrap/dist/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/templates/gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/templates/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/templates/gentelella/build/css/custom.min.css" rel="stylesheet">
   </head>
 
-  <body>
-    <h1>LAYOUT USER DEVISE</h1>
+  <body class="login">
     <%= yield %>
+    <%= javascript_importmap_tags %>
   </body>
 </html>
