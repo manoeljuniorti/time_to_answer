@@ -51,6 +51,10 @@
           <span class="navbar-brand" href="#">Time To Answer</span>
         </div>
         <div class="collapse navbar-collapse" id="navbarCollapse">
+          <%= form_with(url: site_search_path, local: true, method: :get, class:"form-inline my-2 my-lg-0") do |form| %>
+            <%= form.text_field :term, class:"form-control mr-sm-2", placeholder:"Digite algo..." %>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+          <% end %>
           <ul class="navbar-nav mr-auto"></ul>
           <ul class="navbar-nav">
             <% unless user_signed_in? %>
