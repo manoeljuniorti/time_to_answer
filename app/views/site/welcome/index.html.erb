@@ -1,11 +1,18 @@
-<% if user_signed_in? %>
-    <p>Usuário ESTÁ logado / <%= current_user.email %></p> 
-<% else %>
-    <p> Usuário NÃO está logado </p>
-<% end %>
-
-<% if admin_signed_in? %>
-    <p>Administrador ESTÁ logado / <%= current_admin.email %></p>
-<% else %>
-    <p> Administrador NÃO está logado
+<% @questions.each do |question| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><%= question.description %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <% question.answers.each do |answer| %>
+            <li><%= answer.description %></li>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
