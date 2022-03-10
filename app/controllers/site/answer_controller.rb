@@ -1,5 +1,6 @@
 class Site::AnswerController < SiteController
     def question
-        puts ">>>>>>>>> #{params[:answer]}"
+       @answer = Answer.find(params[:answer_id])
+       render "site/answer/question"
     end
 end

@@ -7,7 +7,7 @@
 </div>
 
 <% @questions.each do |question| %>
-  <%= form_with url: site_answer_path, local: true do |form| %>
+  <%= form_with url: site_answer_path, method: :post, local: true, data: { turbo: false } do |form| %>
     <table class="table">
       <thead>
         <tr>
@@ -18,13 +18,9 @@
         <tr>
           <td>
             <% question.answers.each do |answer| %>
-              <li style="list-style-type: none">
-                <div class="radio">
-                  <label>
-                    <%= radio_button_tag ' answer', answer.id %>
-                    <%= answer.description %>
-                  </label>
-                </div>
+              <li style="list-style-type: none">               
+                <%= radio_button_tag 'answer_id', answer.id %>
+                <%= answer.description %>
               </li>
             <% end %>
             <li style="list-style-type: none">
