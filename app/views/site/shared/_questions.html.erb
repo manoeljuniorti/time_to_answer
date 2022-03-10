@@ -1,38 +1,39 @@
+<!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
   <% unless params[:term] %>
     <h3>Últimas perguntas cadastradas...</h3>
   <% else %>
-    <h3><%= "Resultados para o termo \"#{params[:term]}\"..." %></h3>
+    <h3><%= "Resultados  para o termo \"#{params[:term]}\"..."%></h3>
   <% end %>
 </div>
 
 <% @questions.each do |question| %>
-  <%= form_with url: site_answer_path, method: :post, local: true, data: { turbo: false } do |form| %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"><%= question.description %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <% question.answers.each do |answer| %>
-              <li style="list-style-type: none">               
-                <%= radio_button_tag 'answer_id', answer.id %>
-                <%= answer.description %>
-              </li>
-            <% end %>
-            <li style="list-style-type: none">
-              <%= form.submit "Responder", class:"btn btn-primary" %>
+  <%= form_with url: site_answer_path do |form| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= question.description %></h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% question.answers.each do |answer| %>
+            <li style="list-style:none;" >
+              <div class="radio">
+                <label>
+                  <%= radio_button_tag 'answer_id', answer.id %>
+                  <%= answer.description %>
+                </label>
+              </div>
             </li>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <% end %>
+          <li style="list-style:none;">
+            <%= form.submit "Responder", class:"btn btn-default", id: "submit_#{question.id}" %>
+          </li>
+        </ul>
+      </div>
+    </div>
   <% end %>
 <% end %>
 
-<div class="row d-flex justify-content-center">
+<div class="text-center">
   <%= paginate @questions %>
 </div>

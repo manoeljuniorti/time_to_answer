@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -11,20 +11,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
-    <!-- Bootstrap -->
-    <link href="/templates/gentelella/vendors/bootstrap/dist/css/bootstrap-reboot.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="/templates/gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="/templates/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
-    <link href="/templates/gentelella/build/css/custom.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag    'application' %>
+    <%= stylesheet_link_tag    'user_devise' %>
   </head>
 
   <body class="login">
     <%= yield %>
-    <%= javascript_importmap_tags %>
+
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'user_devise' %>
+
+    <% if flash %>
+        <% flash.each do |key, value| %>
+          <%= javascript_tag do %>
+              $.bootstrapGrowl('<%= value %>', {
+              type: 'danger', // (null, 'info', 'danger', 'success')
+              align: 'right', // ('left', 'right', or 'center')
+              allow_dismiss: true, // If true then will display a cross to close the popup.
+              stackup_spacing: 10 // spacing between consecutively stacked growls.
+              });
+          <% end %>
+        <% end %>
+    <% end %>
   </body>
 </html>
+
